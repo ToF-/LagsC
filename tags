@@ -1,0 +1,24 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AjouterOrdre	LagsService.c	/^void AjouterOrdre(struct Node **head_ref)$/;"	f
+Liste	LagsService.c	/^void Liste(struct Node **head_ref) {$/;"	f
+MAXLIGNE	LagsService.c	/^#define MAXLIGNE /;"	d	file:
+Node	LagsService.h	/^struct Node {$/;"	s
+ORDRE	ordre.h	/^ORDRE ;$/;"	t	typeref:struct:__anon1
+append	LagsService.c	/^void append(struct Node** head_ref, ORDRE* new_data)$/;"	f
+debut	ordre.h	/^    int debut;  \/* debut au format AAAAJJJ exemple le 25 février 2003 = 2003056 *\/$/;"	m	struct:__anon1
+deleteList	LagsService.c	/^void deleteList(struct Node **head_ref) {$/;"	f
+freeOrders	LagsService.c	/^void freeOrders(struct Node **head_ref) {$/;"	f
+getFichierOrder	LagsService.c	/^void getFichierOrder(struct Node **head_ref, char *fileName) {$/;"	f
+id	ordre.h	/^    char id[10];$/;"	m	struct:__anon1
+main	LagsService.c	/^int main() {$/;"	f
+next	LagsService.h	/^    struct Node* next;$/;"	m	struct:Node	typeref:struct:Node::Node
+nombreJours	ordre.h	/^    int nombreJours;$/;"	m	struct:__anon1
+ordre	LagsService.h	/^    ORDRE *ordre;$/;"	m	struct:Node
+printOrdres	LagsService.c	/^void printOrdres(struct Node* n) {$/;"	f
+prix	ordre.h	/^    int prix; }$/;"	m	struct:__anon1
+writeOrdres	LagsService.c	/^void writeOrdres(struct Node **head_ref, char *fileName) {$/;"	f
