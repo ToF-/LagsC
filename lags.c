@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <ctype.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include "ordre.h"
@@ -15,7 +16,8 @@ int main() {
         char commande = 'Z';
         printf("A)JOUTER UN ORDRE  L)ISTER   C)ALCULER CA  S)UPPRIMER  Q)UITTER\n");
         while(commande!='A' && commande!='L' && commande!='Q' && commande!='S' && commande!='C') {
-            commande = getc(stdin);
+            fflush(stdin);
+            commande = toupper(getc(stdin));
             switch(commande) {
                 case 'Q':
                     flag = true;
@@ -30,6 +32,9 @@ int main() {
                     Suppression(&head);
                     break;
                 case 'C':
+                    break;
+                default:
+                    printf("%c ?\n", commande);
                     break;
             }
         }

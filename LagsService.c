@@ -88,6 +88,7 @@ void AjouterOrdre(struct Node **head_ref)
     char line[MAXLIGNE];
     printf("AJOUTER UN ORDRE\n");
     printf("FORMAT = ID DEBUT FIN PRIX\n");
+    fflush(stdin);
     fgets(line,MAXLIGNE,stdin);
     char id[10];
     for(int i=0; i<10; id[i++] = '\0');
@@ -135,6 +136,7 @@ void Suppression(struct Node **head_ref) {
     for(int i=0; i<MAXLIGNE; line[i++] = '\0');
     printf("SUPPRIMER UN ORDRE\n");
     printf("ID:");
+    fflush(stdin);
     fgets(line,MAXLIGNE,stdin);
     for(int i=0; i<MAXLIGNE; i++)
         line[i] = toupper(line[i]);
