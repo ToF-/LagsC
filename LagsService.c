@@ -90,6 +90,7 @@ void AjouterOrdre(struct Node **head_ref)
     printf("FORMAT = ID DEBUT FIN PRIX\n");
     fgets(line,MAXLIGNE,stdin);
     char id[10];
+    for(int i=0; i<10; id[i++] = '\0');
     int dep;
     int dur;
     float prx;
@@ -104,6 +105,45 @@ void AjouterOrdre(struct Node **head_ref)
     append(head_ref, ordre);
     writeOrdres(head_ref, "ORDRES.CSV");
     return;
+}
+void deleteNode_withId(struct Node **head_ref, char *id) {
+    if(*head_ref == NULL)
+        return;
+    struct Node* temp = *head_ref;
+    if (strncmp(temp->ordre->id, id, 10) == 0) {
+        *head_ref = temp->next;
+        free(temp->ordre);
+        free(temp);
+        return;
+    }
+    while(temp->next != NULL && strncmp(temp->next->ordre->id, id, 10) != 0) {
+        temp = temp->next;
+    }
+    if (temp->next == NULL) {
+        printf("Ordre %s inconnu.", id);
+        return;
+    }
+    struct Node *next = temp->next->next;
+    free(temp->next->ordre);
+    free(temp->next);
+    temp->next = next;
+}
+
+/* MAJ du fichier */
+void Suppression(struct Node **head_ref) {
+    char line[MAXLIGNE];
+    for(int i=0; i<MAXLIGNE; line[i++] = '\0');
+    printf("SUPPRIMER UN ORDRE\n");
+    printf("ID:");
+    fgets(line,MAXLIGNE,stdin);
+    for(int i=0; i<MAXLIGNE; i++)
+        line[i] = toupper(line[i]);
+    for(int i=0; i<MAXLIGNE; i++) {
+        if(line[i] == '\n')
+            line[i] = '\0';
+    }
+    deleteNode_withId(head_ref, line);
+    writeOrdres(head_ref, "ORDRES.CSV");
 }
 void freeOrders(struct Node **head_ref) {
     struct Node* last = *head_ref;
@@ -125,14 +165,4 @@ void deleteList(struct Node **head_ref) {
         free(temp);
     }
     return;
-}
-int main() {
-    struct Node* head = NULL;
-    getFichierOrder(&head, "ORDRES.CSV");
-    Liste(&head);
-    AjouterOrdre(&head);
-    writeOrdres(&head, "ORDRES.CSV");
-    freeOrders(&head);
-    deleteList(&head);
-    return 0;
 }
