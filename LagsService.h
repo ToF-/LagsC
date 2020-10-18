@@ -12,3 +12,5 @@ void Suppression(struct Node **head_ref);
 void deleteNode_withId(struct Node **head_ref, char *id);
 void Liste(struct Node **head_ref);
 void AjouterOrdre(struct Node **head_ref);
+struct Node *selection(struct Node *node, ORDRE *order);
+double CA(struct Node *node);

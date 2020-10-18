@@ -32,6 +32,7 @@ int main() {
                     Suppression(&head);
                     break;
                 case 'C':
+                    printf("CA:%10.2f\n", CA(head));
                     break;
                 default:
                     printf("%c ?\n", commande);

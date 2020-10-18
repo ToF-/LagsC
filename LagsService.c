@@ -72,13 +72,17 @@ void append(struct Node** head_ref, ORDRE* new_data)
     struct Node *last = *head_ref;
     new_node->ordre  = new_data;
     new_node->next = NULL;
-    if (*head_ref == NULL)
+    if (last == NULL || last->ordre->debut > new_data->debut)
     {
+        if (last != NULL)
+            new_node->next = last->next;
        *head_ref = new_node;
        return;
     }
-    while (last->next != NULL)
+    while (last->next != NULL && last->next->ordre->debut <= new_data->debut)
         last = last->next;
+    if(last->next != NULL)
+        new_node->next = last->next;
     last->next = new_node;
     return;
 }
@@ -130,6 +134,44 @@ void deleteNode_withId(struct Node **head_ref, char *id) {
     temp->next = next;
 }
 
+struct Node *selection(struct Node *current, ORDRE *order) {
+    struct Node *result;
+    current = current->next;
+    if (current == NULL) { 
+        return NULL;
+    }
+    while(current != NULL && current->ordre->debut < order->debut + order->nombreJours) {
+        current = current -> next;
+    }
+    if (current == NULL)
+        return NULL;
+    struct Node *temp = (struct Node *)malloc(sizeof(struct Node));
+    result = temp;
+    temp->ordre = current->ordre;
+    temp->next  = NULL;
+    while(current->next !=NULL && current->next->ordre->debut >= order->debut + order->nombreJours) {
+        temp->next = (struct Node *)malloc(sizeof(struct Node));
+        temp=temp->next;
+        current = current->next;
+        temp->ordre = current->ordre;
+        temp->next  = NULL;
+    }
+    return result;
+}
+double CA(struct Node *node) {
+    /* si aucun ordre, job done */
+    if(node == NULL)
+        return 0.0;
+    ORDRE *order = node->ordre;
+    /* attention ne marche pas pour les ordres qui dépasse la fin de l'année 
+     * voir ticket PLAF n0 4807 */
+    struct Node *liste2= node->next;
+    struct Node *liste = selection(node, order);
+    float ca = order->prix + CA(liste);
+    float ca2 = CA(liste2);
+    deleteList(&liste);
+    return ca > ca2 ? ca : ca2;
+}
 /* MAJ du fichier */
 void Suppression(struct Node **head_ref) {
     char line[MAXLIGNE];

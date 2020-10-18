@@ -5,6 +5,7 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
 AjouterOrdre	LagsService.c	/^void AjouterOrdre(struct Node **head_ref)$/;"	f
+CA	LagsService.c	/^double CA(struct Node *node) {$/;"	f
 Liste	LagsService.c	/^void Liste(struct Node **head_ref) {$/;"	f
 MAXLIGNE	LagsService.c	/^#define MAXLIGNE /;"	d	file:
 Node	LagsService.h	/^struct Node {$/;"	s
@@ -17,10 +18,11 @@ deleteNode_withId	LagsService.c	/^void deleteNode_withId(struct Node **head_ref,
 freeOrders	LagsService.c	/^void freeOrders(struct Node **head_ref) {$/;"	f
 getFichierOrder	LagsService.c	/^void getFichierOrder(struct Node **head_ref, char *fileName) {$/;"	f
 id	ordre.h	/^    char id[10];$/;"	m	struct:__anon1
-main	LagsService.c	/^int main() {$/;"	f
+main	lags.c	/^int main() {$/;"	f
 next	LagsService.h	/^    struct Node* next;$/;"	m	struct:Node	typeref:struct:Node::Node
 nombreJours	ordre.h	/^    int nombreJours;$/;"	m	struct:__anon1
 ordre	LagsService.h	/^    ORDRE *ordre;$/;"	m	struct:Node
 printOrdres	LagsService.c	/^void printOrdres(struct Node* n) {$/;"	f
 prix	ordre.h	/^    float prix; }$/;"	m	struct:__anon1
+selection	LagsService.c	/^struct Node *selection(struct Node *current, ORDRE *order) {$/;"	f
 writeOrdres	LagsService.c	/^void writeOrdres(struct Node **head_ref, char *fileName) {$/;"	f
