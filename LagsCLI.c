@@ -30,24 +30,22 @@ int lags_CLI(struct Node **head_ref, int argc, char *argv[]) {
         ordre->prix = prx;
         append(head_ref, ordre);
         writeOrdres(head_ref, "ORDRES.CSV");
-        return 0;
     }
-    if(!strcmp(argv[1], "-l")) {
+    else if(!strcmp(argv[1], "-l")) {
         Liste(head_ref);
-        return 0;
     }
-    if(!strcmp(argv[1], "-s")) {
+    else if(!strcmp(argv[1], "-s")) {
         if(argc < 3) {
             fprintf(stderr, "usage: lags -s ID\n");
             return 1;
         }
         deleteNode_withId(head_ref, argv[2]);
         writeOrdres(head_ref, "ORDRES.CSV");
-        return 0;
     }
-    if(!strcmp(argv[1], "-c")) {
+    else if(!strcmp(argv[1], "-c")) {
         printf("CA:%10.2f\n", CA(*head_ref));
     }
+    return 0;
 
 }
 
